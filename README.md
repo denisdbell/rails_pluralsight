@@ -27,4 +27,7 @@ rails destroy scaffold Resume
 
 2. Re-run rails generate scaffold Resume name:string email:string phone:string city:string state:string zip:integer summary:text
 
-3. rake db:migrate - There should be a better way
+3. rake db:migrate - There should be a better wayhttps://github.com/denisdbell/rails_pluralsight
+
+
+
