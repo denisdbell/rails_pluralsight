@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614225953) do
+ActiveRecord::Schema.define(version: 20170616013322) do
 
   create_table "jobs", force: :cascade do |t|
     t.string   "company_name"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 20170614225953) do
     t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "view_histories", force: :cascade do |t|
+    t.integer  "resume_id"
+    t.datetime "time_viewed"
+    t.string   "ip"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
