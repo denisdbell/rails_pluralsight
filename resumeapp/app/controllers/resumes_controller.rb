@@ -1,5 +1,21 @@
 class ResumesController < ApplicationController
+
+  before_action 
+          :check_if_resume_exists
+          :check_for_top_secret
+          
+
   before_action :set_resume, only: [:show, :edit, :update, :destroy]
+
+
+  def check_if_resume_exists
+    render :text => "Resume' does not exist'", :status => 403 if  Resume.find(params[:id])
+  end
+
+
+  def check_for_top_secret
+    render :text => "Not authorized", :status => 403 if params[:id] && params[:id].to_i > 500
+  end
 
   def viewed
     resume = Resume.find(params[:id])
