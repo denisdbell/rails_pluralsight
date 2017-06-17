@@ -1,69 +1,36 @@
-require 'fileutils'
-require 'net/http'
-require "json"
+=begin
+    
+    -- Denis Bell -- <denisdbell@gmail.com> Emelius Enterprizes
 
-config_filename = 'config.json'
+    This is the main ruby script which handles input from the command line
+    
+    The "init" command creates the json configuration file which can then be customized
+    
+    The "start" command initiates the url monitoriing process
+=end
+
+require "./easy-mon-lib"
+
+
 command = ARGV[0]
 name = ARGV[1]
 
-#Initialization
+
+config_filename = 'config.json'
+
+
+command_line_input_validation(command)
 
 if command == "init"
 
-     puts "Creating " + config_filename + " file"
-    
-     FileUtils.touch(config_filename)
-
-     #Load default configuration for config.json
-     File.open(config_filename, "w") do |f|
-        f.write '{
-                    "config": { 
-                                "email":{
-                                    "smtpServer":"smtp.gmail.com", 
-                                    "smtpPort":465,
-                                    "sslRequired":true,
-                                    "username":"username@gmail.com",
-                                    "password":"password@gmail.com"
-                                },
-                                "urls":[
-                                    {
-                                      "value":"http://www.google.com"
-                                    },
-                                    {
-                                      "value":"http://www.facebook.com"
-                                    },
-                                    {
-                                      "value":"http://www.twitter.com"
-                                    }
-
-                                ]
-
-                            }
-                 }'
-     end
-
+    create_config config_filename
+   
 end
 
 
-#Read configuration
-config_file = File.open(config_filename)
-
-config = JSON.parse(config_file.read)
-
-#Url parsing
-
-for url in config['config']['urls']
-    
-    url = URI.parse(url['value'])
-        req = Net::HTTP::Get.new(url.to_s)
-        res = Net::HTTP.start(url.host, url.port) {|http|
-             http.request(req)
-        }
-
+if command == "start"
+   start_monitoring config_filename
 end
-
-puts config['config']['urls'][0]['value']  + "responded with a status of" + res.to_s 
-
 
 
 
