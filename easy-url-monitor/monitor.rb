@@ -15,21 +15,15 @@ require "./easy-mon-lib"
 command = ARGV[0]
 name = ARGV[1]
 
-
-config_filename = 'config.json'
-
-
 command_line_input_validation(command)
 
 if command == "init"
-
-    create_config config_filename
-   
+    create_configuration_file 
 end
 
 
 if command == "start"
-   start_monitoring config_filename
+   start_monitoring
 end
 
 
