@@ -5,6 +5,7 @@
      Functions related to manipulation of the config.json file can be found here
 
 =end
+require 'fileutils'
 
 @config_filename='config.json'
 
@@ -17,8 +18,7 @@ def read_configuration_file
 end
 
 #Creates the default configuration file
-def create_configuration_file
-        
+def create_configuration_file 
 
      puts "Creating configuration file " + @config_filename
      
@@ -28,6 +28,8 @@ def create_configuration_file
      File.open(@config_filename, "w") do |f|
         f.write '{
                     "config": { 
+
+                                "monitorDelayInSeconds":10,
                                 "smtp":{
                                     "smtpServer":"smtp.gmail.com", 
                                     "smtpPort":587,
