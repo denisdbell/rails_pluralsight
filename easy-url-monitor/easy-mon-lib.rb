@@ -86,7 +86,7 @@ def command_line_input_validation(command)
                           
                           init - Creates the config.json file with default vaulues:
 
-                          start- Starts the monitoring of the URLS 
+                          monitor- Starts the monitoring of the URLS 
 
                     "
         return
