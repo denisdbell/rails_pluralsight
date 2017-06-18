@@ -32,11 +32,9 @@ def start_monitoring
         
         count = 0
 
-
         for url in config['config']['urls']
 
            
-
             new_url = URI.parse(url['value'] + "?#{SecureRandom.uuid}" ) #Add UUID to prevent caching
 
             log "#{url['value']}?#{SecureRandom.uuid}"
@@ -78,7 +76,7 @@ end
 #Validates input form the command line
 def command_line_input_validation(command)
 
-    if not ['start', 'init'].include? command 
+    if not ['monitor', 'init'].include? command 
 
         puts         "
 
