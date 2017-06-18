@@ -5,16 +5,31 @@
      Functions related to manipulation of the config.json file can be found here
 
 =end
+
 require 'fileutils'
 
 @config_filename='config.json'
 
 #Reads and parses json configuraton file
 def read_configuration_file
-    #Read configuration
-    config_file = File.open(@config_filename)
 
-    config = JSON.parse(config_file.read)
+    begin
+
+        #Read configuration
+        config_file = File.open(@config_filename)
+
+        config = JSON.parse(config_file.read)
+
+    rescue Exception => e
+
+        abort("
+             
+               Easy URL Monitor is not initialized
+                
+               run the **init** command to initialize the moniotor
+               
+             ")
+    end
 end
 
 #Creates the default configuration file
