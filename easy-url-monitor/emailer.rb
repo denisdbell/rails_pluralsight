@@ -22,7 +22,6 @@ def send_email
 
         options = { :address              => smtpServer,
                     :port                 => smtpPort,
-                    :domain               => 'your.host.name',
                     :user_name            =>  username,
                     :password             =>  password,
                     :authentication       => 'plain',
@@ -32,6 +31,13 @@ def send_email
 
         Mail.defaults do
              delivery_method :smtp, options
+        end
+
+        Mail.deliver do
+            to 'denisdbell@gmail.com'
+            from 'denisdbell@gmail.com'
+            subject 'testing sendmail'
+            body 'testing sendmail'
         end
 end
 
