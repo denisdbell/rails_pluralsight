@@ -20,8 +20,7 @@ command_line_input_validation(command)
 if command == "init"
     create_configuration_file 
 end
-
-
+  
 if command == "start"
    start_monitoring
 end
