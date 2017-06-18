@@ -21,7 +21,7 @@ if command == "init"
     create_configuration_file 
 end
   
-if command == "start"
+if command == "monitor"
    start_monitoring
 end
 
