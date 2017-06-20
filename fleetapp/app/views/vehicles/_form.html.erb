@@ -26,6 +26,8 @@
     <%= f.datetime_select :year %>
   </div>
 
+  <%= f.collection_select(:fleet_ids, Fleet.all, :id, :name ) %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
