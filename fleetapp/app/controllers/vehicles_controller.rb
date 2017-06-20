@@ -25,9 +25,7 @@ class VehiclesController < ApplicationController
   # POST /vehicles
   # POST /vehicles.json
   def create
-
-    puts vehicle_params
-
+    
     @vehicle = Vehicle.new(vehicle_params)
 
     @vehicle.fleets = Fleet.find(vehicle_params["fleet_ids"])
